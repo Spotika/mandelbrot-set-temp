@@ -21,5 +21,4 @@ jobs:
         run: docker compose down -v
 
       - name: Run container
-        run: docker compose up -d backend
-
+        run: docker compose up -d
