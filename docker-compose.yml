@@ -4,4 +4,25 @@ services:
     build:
       context: ./backend
     ports:
-      - "8080:8080"
+      - 8080:8080
+    labels:
+      - "traefik.http.routers.api.rule=Host(`spotika4.difhel.dev`)"
+      - "traefik.http.routers.api.entrypoints=websecure"
+      - "traefik.http.services.api.loadbalancer.server.port=4242"
+      - "traefik.http.routers.api.tls.certresolver=myresolver"
+  traefik:
+    image: traefik:v3.0
+    depends_on:
+      - backend
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--certificatesresolvers.myresolver.acme.email=andrey.a.cherkashin@gmail.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - 443:443
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "./data/letsencrypt:/letsencrypt"

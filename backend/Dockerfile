@@ -35,4 +35,4 @@ WORKDIR ./build
 RUN cmake ..
 RUN cmake --build .
 
-CMD ["./fullstack-cpp-react"]
+CMD ["./backend"]
