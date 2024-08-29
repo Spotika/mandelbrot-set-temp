@@ -6,23 +6,26 @@ services:
     ports:
       - 8080:8080
     labels:
-      - "traefik.http.routers.api.rule=Host(`spotika4.difhel.dev`)"
-      - "traefik.http.routers.api.entrypoints=websecure"
-      - "traefik.http.services.api.loadbalancer.server.port=4242"
-      - "traefik.http.routers.api.tls.certresolver=myresolver"
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`spotika4.difhel.dev`)"
+      - "traefik.http.routers.backend.entrypoints=websecure"
+      - "traefik.http.routers.backend.tls.certresolver=myresolver"
   traefik:
-    image: traefik:v3.0
-    depends_on:
-      - backend
+    image: "traefik:v3.1"
+    container_name: "traefik"
     command:
+      #- "--log.level=DEBUG"
       - "--api.insecure=true"
       - "--providers.docker=true"
-      - "--entrypoints.websecure.address=:443"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entryPoints.websecure.address=:443"
       - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      #- "--certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory"
       - "--certificatesresolvers.myresolver.acme.email=andrey.a.cherkashin@gmail.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
     ports:
-      - 443:443
+      - "443:443"
+      - "8080:8080"
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "./data/letsencrypt:/letsencrypt"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
