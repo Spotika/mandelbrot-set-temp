@@ -11,14 +11,14 @@ jobs:
     runs-on: self-hosted
     timeout-minutes: 15
     steps:
-      - name: Stop previous container
-        run: docker compose down -v
-
       - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Build
         run: docker compose build
 
+      - name: Stop previous container
+        run: docker compose down -v
+
       - name: Run container
-        run: docker compose up -d
+        run: docker compose --profile production up
