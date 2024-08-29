@@ -16,7 +16,7 @@ int main() {
 
   app.Get("/ping", [](const auto& req, auto& res) {
     json response = {
-      {"ok", true}
+      {"ok", false}
     };
 
     JSON_RESPONSE(response);
