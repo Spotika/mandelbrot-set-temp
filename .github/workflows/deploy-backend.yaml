@@ -21,4 +21,4 @@ jobs:
         run: docker compose down -v
 
       - name: Run container
-        run: docker compose --profile production up
+        run: docker compose --profile production up -d
