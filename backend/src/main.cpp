@@ -6,6 +6,8 @@
 
 using json = nlohmann::json;
 
+int counter = 0;
+
 int main() {
   httplib::Server app;
 
@@ -17,6 +19,15 @@ int main() {
   app.Get("/ping", [](const auto& req, auto& res) {
     json response = {
       {"ok", true}
+    };
+
+    JSON_RESPONSE(response);
+  });
+
+  app.Post("/increment", [](const auto& req, auto& res) {
+    json response = {
+      {"ok", true},
+      {"counter", ++counter}
     };
 
     JSON_RESPONSE(response);
