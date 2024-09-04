@@ -25,7 +25,7 @@ export default defineConfig({
       plugins: [
         {
           name: 'disable-treeshake',
-          transform(code, id) {
+          transform(_code, id) {
               if (id.includes("index.module.scss")) {
                   return { moduleSideEffects: 'no-treeshake' };
               }
