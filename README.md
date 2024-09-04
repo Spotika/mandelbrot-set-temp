@@ -3,8 +3,7 @@
 
 ## Roadmap
 - [x] Backend
-- [ ] Frontend
+- [x] Frontend
 - [ ] Tests
-- [ ] CI
-- [ ] CD (frontend)
-- [ ] CD (backend)
+- [x] CI/CD (frontend)
+- [ ] CI/CD (backend)
