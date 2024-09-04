@@ -18,8 +18,7 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ['react', 'react-dom'],
-          lottie: ['lottie-react'],
+          react: ['react', 'react-dom']
         }
       },
       plugins: [
