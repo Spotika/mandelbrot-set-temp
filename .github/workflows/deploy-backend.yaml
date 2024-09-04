@@ -18,7 +18,7 @@ jobs:
         run: docker compose build
 
       - name: Stop previous container
-        run: docker compose down -v
+        run: docker compose down -p "cpp-react-template" -v
 
       - name: Run container
         run: docker compose --profile production up -d
