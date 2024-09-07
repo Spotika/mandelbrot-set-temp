@@ -1,0 +1,3 @@
+/mnt/c/Users/Andre/Projects/Pracs/koh-curve/build/CMakeFiles/backend.dir
+/mnt/c/Users/Andre/Projects/Pracs/koh-curve/build/CMakeFiles/edit_cache.dir
+/mnt/c/Users/Andre/Projects/Pracs/koh-curve/build/CMakeFiles/rebuild_cache.dir

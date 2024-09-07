@@ -78,19 +78,24 @@ export const HelloPage = () => {
     const gl = canvas.current?.getContext('webgl');
     if (!gl) return;
 
-    const points = generateKochCurve(depth).flat();
+    // const points = generateKochCurve(depth).flat();
 
-    const buffer = gl.createBuffer();
-    gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW);
+    fetch("http://localhost:8080/curve?iterations=" + depth.toString()).then(async (res) => {
+      const points = (await res.json()).points;
 
-    const a_position = gl.getAttribLocation(gl_items.current.program, 'a_position');
-    gl.enableVertexAttribArray(a_position);
-    gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0);
+      const buffer = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(points), gl.STATIC_DRAW);
 
-    gl.clearColor(0, 0, 0, 1);
-    gl.clear(gl.COLOR_BUFFER_BIT);
-    gl.drawArrays(gl.LINE_STRIP, 0, points.length / 2);
+      const a_position = gl.getAttribLocation(gl_items.current.program, 'a_position');
+      gl.enableVertexAttribArray(a_position);
+      gl.vertexAttribPointer(a_position, 2, gl.FLOAT, false, 0, 0);
+
+      gl.clearColor(0, 0, 0, 1);
+      gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.drawArrays(gl.LINE_STRIP, 0, points.length / 2);
+    });
+
   }, [gl_items, depth]);
 
   return <div className={styles.container}>
@@ -123,6 +128,7 @@ export const HelloPage = () => {
         ))}
       </div>
       <button onClick={() => {
+        if (depth >= 11) return;
         setDepth(depth + 1);
       }}>
         Next

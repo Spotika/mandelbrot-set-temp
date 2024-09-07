@@ -58,9 +58,9 @@ button {
 }
 
 .depth-variants {
+  display: flex;
+  justify-content: space-around;
   button {
     margin-right: .25rem;
   }
-  display: flex;
-  justify-content: space-around;
 }
