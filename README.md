@@ -1,9 +1,3 @@
 > [!WARNING]
-> WORK IN PROGRESS
+> TEMPORARY REPO. It will be deleted later
 
-## Roadmap
-- [x] Backend
-- [x] Frontend
-- [ ] Tests
-- [x] CI/CD (frontend)
-- [ ] CI/CD (backend)
