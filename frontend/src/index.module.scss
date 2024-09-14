@@ -338,3 +338,35 @@ h1, h2, h3, h4, h5, h6 {
       --border-outline-variant: 1px solid var(--outline-variant);
   }
 }
+
+button {
+  padding: 0.5rem;
+  background-color: var(--primary-container);
+  border: var(--border-none);
+  color: var(--primary);
+  border-radius: var(--shape-medium);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--primary);
+    color: var(--on-primary);
+  }
+}
+
+.container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--on-surface);
+}
+
+.title {
+  margin-bottom: 10rem;
+}
+
+.controls {
+  display: flex;
+  gap: 3rem;
+}

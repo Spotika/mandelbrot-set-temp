@@ -1,0 +1,1 @@
+export { MandelbrotPage } from "./MandelbrotPage"

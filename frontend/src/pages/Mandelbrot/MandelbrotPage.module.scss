@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--on-surface);
+}
+
+.canvas {
+  margin-top: 5rem;
+  border: var(--border-outline);
+}
+
+.info {
+  font-size: 14px;
+  color: var(--on-surface);
+}
