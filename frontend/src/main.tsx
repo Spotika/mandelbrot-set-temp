@@ -1,7 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 
-// import styles from "./index.module.scss"
+import styles from "./index.module.scss"
 import axios from 'axios';
 import { MandelbrotPage } from './pages/Mandelbrot';
 
@@ -12,7 +12,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode >
     {/* <App /> */}
     {/* <HelloPage /> */}
-    <h1></h1>
+    <h1 className={styles.container}></h1>
     <MandelbrotPage />
   </StrictMode>
 )
