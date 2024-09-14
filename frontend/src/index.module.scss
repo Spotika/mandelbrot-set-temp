@@ -354,12 +354,13 @@ button {
 }
 
 .container {
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: var(--on-surface);
+  display: none;
+  // flex-grow: 1;
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  // color: var(--on-surface);
 }
 
 .title {
